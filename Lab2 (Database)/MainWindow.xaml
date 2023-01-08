@@ -1,0 +1,55 @@
+﻿<Window x:Class="Lab_2.Database.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab_2.Database"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
+            <DockPanel>
+                <TextBlock VerticalAlignment="Center" Text="ID"/>
+                <TextBox Name="idBox" HorizontalAlignment="Right" Width="150" Margin="0,5,0,0"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock VerticalAlignment="Center" Text="ФИО"/>
+                <TextBox Name="nameBox" HorizontalAlignment="Right" Width="150" Margin="0,5,0,0"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock VerticalAlignment="Center" Text="Оценка (физ.)"/>
+                <TextBox Name="phMarkBox" HorizontalAlignment="Right" Width="150" Margin="0,5,0,0"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock VerticalAlignment="Center" Text="Оценка (мат.)"/>
+                <TextBox Name="mathMarkBox" HorizontalAlignment="Right" Width="150" Margin="25,5,0,5"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock VerticalAlignment="Center" Text="Стипендия?"/>
+                <CheckBox Name="stipendBox" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                <Button Name ="enterData" Click="EnterData" Content="Добавить" HorizontalAlignment="Center"/>
+            </DockPanel>
+            <Button Name="deleteButton" Click="Delete" Content="Удалить выделенное" 
+                HorizontalAlignment="Left" Margin="0,20,0,10"/>
+            <Button Name="editButton" Click="EndEdit" Content="Снять выделение" 
+                HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <DataGrid Name="studentsGrid" AutoGenerateColumns="True" Grid.Column="1"
+                  IsReadOnly="True" SelectionChanged="SelectionChanged">
+            <DataGrid.Resources/>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
+                <DataGridTextColumn Header="ФИО студента" Binding="{Binding name}"/>
+                <DataGridCheckBoxColumn Header="Стипендия" Binding="{Binding stipend}"/>
+                <DataGridTextColumn Header="Физика" Binding="{Binding phMark}"/>
+                <DataGridTextColumn Header="Математика" Binding="{Binding mathMark}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
